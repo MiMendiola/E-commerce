@@ -9,10 +9,18 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'), // to know where we are working
         filename: 'bundle.js',
+        publicPath : '/' //Specifying the home page
     },
     mode: 'development',
     resolve: {
-        extensions: ['.js', '.jsx'] // files we are gona work with
+        extensions: ['.js', '.jsx'], // files we are gona work with
+        alias: { // this alias allow us to put this elements as a reference in the components
+            'components': path.resolve(__dirname, 'src/components/'),
+            'containers': path.resolve(__dirname, 'src/containers/'),
+            'styles': path.resolve(__dirname, 'src/styles/'),
+            'icons': path.resolve(__dirname, 'src/assets/icons/'),
+            'logos': path.resolve(__dirname, 'src/assets/logos/')
+        },
     },
     module: {
         rules: [
@@ -32,16 +40,20 @@ module.exports = {
                 ]
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.(css|scss)$/,
                 use: [
                     "style-loader",
                     "css-loader",
                     "sass-loader"
                 ]
+            },
+            {
+                test: /\.(png|svg|jp(e*)g|gif)$/,
+                type: 'asset'
             }
         ]
     },
-    plugins: [
+    plugins: [ // Bringing installed plugins
         new HtmlWebpackPlugin({
             template: './public/index.html',
             filename: './index.html'
@@ -49,5 +61,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true,
+        
+    }
 } 
