@@ -17,7 +17,10 @@ module.exports = {
         alias: { // this alias allow us to put this elements as a reference in the components
             'components': path.resolve(__dirname, 'src/components/'),
             'containers': path.resolve(__dirname, 'src/containers/'),
+            'context': path.resolve(__dirname, 'src/context/'),
+            'pages': path.resolve(__dirname, 'src/pages/'),
             'styles': path.resolve(__dirname, 'src/styles/'),
+            'hooks': path.resolve(__dirname, 'src/hooks/'),
             'icons': path.resolve(__dirname, 'src/assets/icons/'),
             'logos': path.resolve(__dirname, 'src/assets/logos/')
         },

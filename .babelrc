@@ -3,5 +3,8 @@
     "presets" : [
         "@babel/preset-env", // work from ES6 to the Actual
         "@babel/preset-react" // is going to work with jsx and all the sintax in the library
+    ],
+    "plugins": [
+        "@babel/plugin-transform-runtime" // is going to helping us handeling the async/await request
     ]
 }

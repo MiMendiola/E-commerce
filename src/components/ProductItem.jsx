@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'styles/components/ProductItem.scss';
+import AppContext from 'context/AppContext';
 
-import addCart from 'icons/bt_add_to_cart.svg';
+import addCartImage from 'icons/bt_add_to_cart.svg';
 
-const ProductItem = () => {
+const ProductItem = ({ product }) => {
+	// conect this pages with the custom hook to take the new info
+	const { addToCart } = useContext(AppContext);
+	
+	const handleClick = item => {
+		addToCart(item);
+	}
+ 
 	return (
 		<div className="ProductItem">
-			<img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" />
+			<img src={product.images[0]} alt={product.title} />
 			<div className="product-info">
 				<div>
-					<p>$120,00</p>
-					<p>Bike</p>
+					<p>${product.price}</p>
+					<p>{product.title}</p>
 				</div>
-				<figure>
-					<img src={addCart} alt="" />
+				<figure onClick={() => handleClick(product)}>
+					<img src={addCartImage} alt="Cart-img" />
 				</figure>
 			</div>
 		</div>

@@ -1,6 +1,10 @@
 @import '../vars';
 
 .Menu {
+	position: absolute;
+	top: 60px;
+	right: 55px;
+	background-color: white;
 	width: 100px;
 	height: auto;
 	border: 1px solid var(--very-light-pink);
